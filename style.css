@@ -1,0 +1,127 @@
+:root {
+    --primary: #00ff00;
+    --hp-red: #ff3333;
+    --bg-dark: #050505;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg-dark); color: #fff; font-family: 'Noto Sans SC', sans-serif; overflow-x: hidden; }
+
+/* 背景 */
+.bg-fixed-layer { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -10; pointer-events: none; }
+.grid-overlay { width: 100%; height: 100%; background: linear-gradient(rgba(254, 254, 254, 0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(254, 254, 254, 0.06) 1px, transparent 1px); background-size: 50px 50px; }
+.decor-icon { position: absolute; color: var(--primary); opacity: 0.4; font-size: 2.5rem; filter: drop-shadow(0 0 10px var(--primary)); animation: floatAnim 8s infinite ease-in-out; }
+@keyframes floatAnim { 0%,100%{transform:translate(0,0);} 50%{transform:translate(15px,-15px);} }
+
+/* 导航栏自适应优先级 (要求2修复) */    
+.navbar { position: fixed; top: 0; width: 100%; height: 75px; background: rgba(0,0,0,0.95); border-bottom: 2px solid var(--primary); z-index: 1000; }
+.nav-container { max-width: 1600px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 100%; padding: 0 40px; white-space: nowrap; /* 核心：禁止换行 */}
+
+.nav-left { font-family: 'Oswald'; font-size: 1.8rem; font-weight: 900; white-space: nowrap; flex: 1; }
+.white-cursor { color: #fff; animation: blink 0.8s infinite; margin-left: 2px; }
+@keyframes blink { 0%, 100% {opacity: 1;} 50% {opacity: 0;} }
+
+.nav-menu { display: flex; list-style: none; gap: 30px; flex: 2; justify-content: center; flex-shrink: 0; /* 核心：不压缩页签 */align-items: center;}
+.nav-link { 
+    cursor: pointer; color: #888; font-weight: bold; font-size: 15px; 
+    position: relative; padding: 5px 0; transition: 0.3s; white-space: nowrap; 
+}
+.nav-link.active { color: var(--primary); }
+.nav-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: var(--primary); transition: 0.3s; }
+.nav-link:hover::after { width: 100%; }
+
+.nav-right { display: flex; align-items: center; gap: 20px; flex: 1; justify-content: flex-end; }
+.hp-bar { width: 110px; height: 10px; border: 1px solid #444; background: #000; overflow: hidden; }
+.hp-fill-red { width: 10%; height: 100%; background: var(--hp-red); box-shadow: 0 0 10px var(--hp-red); transition: 1s; }
+.lv { font-family: 'Oswald'; color: var(--primary); font-size: 1.2rem; white-space: nowrap; }
+
+/* 导航优先级媒体查询 */
+/* 优先级显示：窗口变小时依次消失 */
+@media (max-width: 1000px) {
+    .hp-box-wrap { display: none; } /* 宽度小于1000px隐藏血条 */
+}
+@media (max-width: 800px) {
+    .lv-box-wrap { display: none; } /* 宽度小于800px隐藏等级 */
+}
+@media (max-width: 600px) {
+    .nav-left { display: none; }   /* 极窄屏隐藏LOGO，死守页签 */
+}
+
+/* 英雄区 */
+.hero { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.hero-title { font-family: 'Oswald'; font-size: clamp(4rem, 15vw, 10rem); line-height: 0.8; }
+.hollow { color: transparent; -webkit-text-stroke: 1px #fff; }
+.hero-sub { margin-top: 40px; }
+.hero-sub p { font-size: 1.2rem; line-height: 2; margin-bottom: 10px; }
+
+.scroll-hint { margin-top: 30px; opacity: 0.7; display: flex; flex-direction: column; align-items: center; }
+.mouse-icon { width: 24px; height: 38px; border: 2px solid #fff; border-radius: 12px; position: relative; margin: 10px auto; }
+.wheel { width: 4px; height: 3px; background: #fff; position: absolute; top: 6px; left: 50%; transform: translateX(-50%); animation: wheelDown 1.6s infinite; }
+@keyframes wheelDown { 0%{opacity:1; top:6px;} 100%{opacity:0; top:22px;} }
+.arrow-bounce { color: var(--primary); font-size: 1.5rem; animation: bounce 2s infinite; }
+@keyframes bounce { 0%,100%{transform:translateY(0);} 50%{transform:translateY(10px);} }
+
+/* 项目经历 */
+.exp-list { max-width: 1000px; margin: 0 auto; border-left: 2px solid var(--primary); padding: 0 40px; }
+.exp-item { margin-bottom: 50px; position: relative; }
+.exp-item::before { content: ''; position: absolute; left: -47px; top: 0; width: 12px; height: 12px; background: var(--primary); border-radius: 50%; box-shadow: 0 0 10px var(--primary); }
+.exp-time { font-family: 'Oswald'; color: var(--primary); font-size: 1.1rem; margin-bottom: 10px; }
+.exp-content h3 { font-size: 1.5rem; margin-bottom: 10px; }
+
+/* 真正的无限滚动 (要求3修复) */
+.section-header { text-align: center; font-family: 'Oswald'; color: var(--primary); font-size: 2.2rem; margin: 80px 0 40px; letter-spacing: 2px; }
+.marquee-outer { overflow: hidden; background: rgba(10,10,10,0.8); border-top: 1px solid #222; border-bottom: 1px solid #222; padding: 25px 0; display: flex; }
+.marquee-track { display: flex; width: max-content; }
+.marquee-content { display: flex; gap: 80px; padding-right: 80px; animation: scrollEffect 40s linear infinite; }
+.marquee-outer:hover .marquee-content { animation-play-state: paused; }
+@keyframes scrollEffect { from { transform: translateX(0); } to { transform: translateX(-50%); } } /* 滚动一半即完成循环 */
+.marquee-content span { display: flex; align-items: center; gap: 15px; font-size: 1.8rem; font-weight: bold; white-space: nowrap; }
+.marquee-content i { color: var(--primary); }
+
+/* 作品网格 (居中自适应) */
+.adaptive-grid-centered { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 40px; justify-content: center; max-width: 1600px; margin: 0 auto; width: 90%; }
+.action-bar-center { display: flex; justify-content: center; margin-top: 60px; }
+
+.work-card { background: #111; border: 1px solid #222; overflow: hidden; transition: 0.3s; cursor: pointer; text-align: left; }
+.work-card:hover { border-color: var(--primary); transform: translateY(-8px); }
+.img-box { width: 100%; height: 210px; overflow: hidden; }
+.img-box img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
+.work-card:hover img { transform: scale(1.1); }
+.info { padding: 20px; }
+.info span { color: var(--primary); font-size: 12px; font-weight: bold; }
+.info h3 { margin-top: 8px; font-family: 'Oswald'; font-size: 1.4rem; }
+
+/* 社交区域 (间距优化) */
+.home-social-block { text-align: center; padding: 60px 0; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 40px; }
+.social-label { color: var(--primary); font-size: 13px; letter-spacing: 3px; margin-bottom: 40px; }
+.social-icons { display: flex; justify-content: center; gap: 60px; font-size: 3rem; }
+.social-icons a { color: #fff; transition: 0.3s; }
+.social-icons a:hover { color: var(--primary); transform: scale(1.2); }
+
+/* 全局页脚融合 (要求1修复) */
+.global-footer-fused {
+    background: transparent; /* 去掉黑色背景 */
+    padding: 20px 40px;
+    margin-top: 10px;
+    border-top: 1px solid rgba(255,255,255,0.05); /* 极淡的分隔线 */
+}
+.footer-wrap { max-width: 1600px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; opacity: 0.5; }
+.cheat-hint { font-family: 'Oswald'; font-size: 11px; padding-left: 10px;}
+.icp-info { font-size: 10px; padding-right: 10px;}
+
+/* 联系我免滚动 */
+.contact-screen { min-height: 80vh; display: flex; align-items: center; justify-content: center; }
+.contact-card-dark { background: #0a0a0a; border: 1px solid #222; padding: 50px; display: flex; flex-wrap: wrap; justify-content: center; gap: 60px; }
+.qr-node { text-align: center; }
+.qr-node img { width: 180px; border: 1px solid var(--primary); margin-bottom: 15px; background: #fff; padding: 5px; }
+.mail-info { width: 100%; text-align: center; border-top: 1px solid #222; padding-top: 25px; font-size: 1.8rem; font-weight: bold; color: var(--primary); }
+
+.totop-btn { position: fixed; right: 40px; bottom: 80px; background: #000; color: var(--primary); border: 1px solid var(--primary); width: 60px; height: 60px; display: none; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; border-radius: 4px; z-index: 2000; }
+.page { display: none; min-height: 100vh; padding-top: 75px; animation: pageFade 0.4s ease; }
+.page.active { display: block; }
+@keyframes pageFade { from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);} }
+
+.pixel-btn { background: none; border: 1px solid var(--primary); color: var(--primary); padding: 15px 45px; font-family: 'Oswald'; cursor: pointer; transition: 0.3s; font-size: 1.1rem; }
+.pixel-btn:hover { background: var(--primary); color: #000; box-shadow: 0 0 20px var(--primary); }
+.egg-toast { position: fixed; top: -200px; left: 50%; transform: translateX(-50%); background: gold; color: #000; padding: 15px 40px; font-family: 'Oswald'; font-weight: bold; border-radius: 4px; transition: 0.5s; z-index: 9999; box-shadow: 0 0 20px gold; }
+.egg-toast.active { top: 100px; }

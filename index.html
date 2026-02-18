@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>策划 | 张鹭辉</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@900&family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="game-os">
+
+    <!-- 固定背景层 -->
+    <div id="bg-system" class="bg-fixed-layer">
+        <div class="grid-overlay"></div>
+    </div>
+
+    <!-- 彩蛋通知 -->
+    <div id="egg-toast" class="egg-toast">GM模式：无敌+满级</div>
+
+    <!-- 顶部导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">张鹭辉<span class="white-cursor">_</span></div>
+            
+            <ul class="nav-menu">
+                <li class="nav-link active" onclick="showPage('home')">主页</li>
+                <li class="nav-link" onclick="showPage('works')">个人作品</li>
+                <li class="nav-link" onclick="showPage('contact')">联系我</li>
+            </ul>
+
+            <div class="nav-right">
+                <div class="lv-box-wrap"><span class="lv">LV.<span id="lv-num">1</span></span></div>
+                <div class="hp-box-wrap"><div class="hp-bar"><div id="hp-fill" class="hp-fill-red"></div></div></div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="content-wrapper">
+        <!-- 【主页】 -->
+        <section id="page-home" class="page active">
+            <div class="hero">
+                <h1 class="hero-title">GAME<br><span class="hollow">PLANNER</span></h1>
+                <div class="hero-sub">
+                    <p class="intent">意向：系统策划</p>
+                    <p class="quote">“以逻辑驱动情感，用数值丈量情感”</p>
+                </div>
+                <div class="scroll-hint">
+                    <p>SCROLL</p>
+                    <div class="mouse-icon"><div class="wheel"></div></div>
+                    <i class="fas fa-angle-double-down arrow-bounce"></i>
+                </div>
+            </div>
+
+            <!-- 项目经历 -->
+            <div class="section-container">
+                <h2 class="section-header">项目经历 EXPERIENCE</h2>
+                <div class="exp-list">
+                    <div class="exp-item">
+                        <div class="exp-time">2023.01 - 至今</div>
+                        <div class="exp-content">
+                            <h3>《核心：湮灭》- 3D动作手游</h3>
+                            <p>负责内容：关卡白模搭建、怪物数值平衡计算、战斗表现文档撰写。</p>
+                        </div>
+                    </div>
+                    <div class="exp-item">
+                        <div class="exp-time">2022.06 - 2022.12</div>
+                        <div class="exp-content">
+                            <h3>《梦境边缘》- 2D平台解谜</h3>
+                            <p>负责内容：核心解谜机制设计、全案策划文档撰写、版本同步管理。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 技能条 (CSS 无缝方案) -->
+            <div class="section-container">
+                <h2 class="section-header">技能工具 SKILLS</h2>
+                <div class="marquee-outer">
+                    <div class="marquee-track">
+                        <div class="marquee-content">
+                            <span><i class="fab fa-unity"></i> Unity</span>
+                            <span><i class="fas fa-cube"></i> UE5</span>
+                            <span><i class="fas fa-code-branch"></i> SVN/Git</span>
+                            <span><i class="fas fa-file-excel"></i> Excel</span>
+                            <span><i class="fas fa-project-diagram"></i> Xmind</span>
+                            <span><i class="fab fa-adobe"></i> Photoshop</span>
+                            <span><i class="fas fa-vial"></i> 墨刀</span>
+                            <span><i class="fas fa-terminal"></i> C#基础</span>
+                        </div>
+                        <!-- 复制一份完全一样的用于衔接 -->
+                        <div class="marquee-content">
+                            <span><i class="fab fa-unity"></i> Unity</span>
+                            <span><i class="fas fa-cube"></i> UE5</span>
+                            <span><i class="fas fa-code-branch"></i> SVN/Git</span>
+                            <span><i class="fas fa-file-excel"></i> Excel</span>
+                            <span><i class="fas fa-project-diagram"></i> Xmind</span>
+                            <span><i class="fab fa-adobe"></i> Photoshop</span>
+                            <span><i class="fas fa-vial"></i> 墨刀</span>
+                            <span><i class="fas fa-terminal"></i> C#基础</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 主页精选作品 -->
+            <div class="section-container">
+                <h2 class="section-header">精选作品 FEATURED</h2>
+                <div class="adaptive-grid-centered">
+                    <!-- 你可以直接在这里手动改 HTML -->
+                    <div class="work-card" onclick="window.open('https://www.bilibili.com/?spm_id_from=333.881.0.0', '_blank')">
+                        <div class="img-box"><img src="images/1.jpeg" onerror="this.src='https://via.placeholder.com/600x350/111/00ff00?text=Work+1'"></div>
+                        <div class="info"><span>[系统策划]</span><h3>PROJECT_VOID</h3><p>核心战斗循环与成长模型设计</p></div>
+                    </div>
+                    <div class="work-card" onclick="window.open('https://www.bilibili.com/?spm_id_from=333.881.0.0', '_blank')">
+                        <div class="img-box"><img src="images/2.jpeg" onerror="this.src='https://via.placeholder.com/600x350/111/00ff00?text=Work+2'"></div>
+                        <div class="info"><span>[关卡设计]</span><h3>DUNGEON_GEN</h3><p>基于网格的随机场景生成算法</p></div>
+                    </div>
+                </div>
+                <div class="action-bar-center">
+                    <button class="pixel-btn" onclick="showPage('works')">VIEW_ALL_ARCHIVE</button>
+                </div>
+            </div>
+
+            <!-- 主页社交媒体 -->
+            <div class="home-social-block">
+                <p class="social-label">SOCIAL MEDIA / 社交媒体</p>
+                <div class="social-icons">
+                    <a href="https://www.bilibili.com/?spm_id_from=333.881.0.0" target="_blank"><i class="fab fa-bilibili"></i></a>
+                    <a href="https://www.bilibili.com/?spm_id_from=333.881.0.0" target="_blank"><i class="fas fa-camera-retro"></i></a>
+                    <a href="https://www.bilibili.com/?spm_id_from=333.881.0.0" target="_blank"><i class="fab fa-weixin"></i></a>
+                    <a href="https://www.bilibili.com/?spm_id_from=333.881.0.0" target="_blank"><i class="fab fa-qq"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 【个人作品页】 -->
+        <section id="page-works" class="page">
+            <h1 class="section-header">PROJECT_ARCHIVE</h1>
+            <div class="adaptive-grid-centered">
+                <!-- 放置 1-8.jpeg 的所有作品 -->
+                <div class="work-card" onclick="window.open('https://www.bilibili.com/?spm_id_from=333.881.0.0', '_blank')">
+                    <div class="img-box"><img src="images/1.jpeg"></div>
+                    <div class="info"><span>[系统]</span><h3>PROJECT_1</h3></div>
+                </div>
+                <!-- 作品 2-8 按同样格式复制即可 -->
+            </div>
+        </section>
+
+        <!-- 【联系我页】 -->
+        <section id="page-contact" class="page contact-screen">
+            <div class="contact-fixed-content">
+                <h1 class="section-header">联系我</h1>
+                <div class="contact-card-dark">
+                    <div class="qr-node">
+                        <img src="images/1.jpeg" onerror="this.src='https://via.placeholder.com/150?text=WX+QR'">
+                        <p>微信：<span>行xing</span></p>
+                    </div>
+                    <div class="qr-node">
+                        <img src="images/1.jpeg" onerror="this.src='https://via.placeholder.com/150?text=QQ+QR'">
+                        <p>QQ：<span>775623431</span></p>
+                    </div>
+                    <div class="mail-info">邮箱：775623431@qq.com</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 全局页脚 -->
+        <footer class="global-fused-footer">
+            <div class="footer-wrap">
+                <span class="cheat-hint">输入 “GAME” 好像有什么</span>
+                <!-- <span class="icp-info">某ICP备2022022313号-2</span>-->
+            </div>
+        </footer>
+    </main>
+
+    <div id="totop" class="totop-btn" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+        <i class="fas fa-angle-double-up"></i><span>TOP</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
