@@ -9,7 +9,7 @@ body { background: var(--bg-dark); color: #fff; font-family: 'Noto Sans SC', san
 
 /* 背景 */
 .bg-fixed-layer { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -10; pointer-events: none; }
-.grid-overlay { width: 100%; height: 100%; background: linear-gradient(rgba(254, 254, 254, 0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(254, 254, 254, 0.06) 1px, transparent 1px); background-size: 50px 50px; }
+.grid-overlay { width: 100%; height: 100%; background: linear-gradient(rgba(254, 254, 254, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(254, 254, 254, 0.1) 1px, transparent 1px); background-size: 50px 50px; }
 .decor-icon { position: absolute; color: var(--primary); opacity: 0.4; font-size: 2.5rem; filter: drop-shadow(0 0 10px var(--primary)); animation: floatAnim 8s infinite ease-in-out; }
 @keyframes floatAnim { 0%,100%{transform:translate(0,0);} 50%{transform:translate(15px,-15px);} }
 
